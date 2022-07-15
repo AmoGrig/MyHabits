@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243106B22881E1A60038A858 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243106B12881E1A60038A858 /* HabitsStore.swift */; };
 		24AA1094288059AC007E55CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1093288059AC007E55CC /* AppDelegate.swift */; };
 		24AA1096288059AC007E55CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1095288059AC007E55CC /* SceneDelegate.swift */; };
 		24AA1098288059AC007E55CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1097288059AC007E55CC /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243106B12881E1A60038A858 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		24AA1090288059AC007E55CC /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24AA1093288059AC007E55CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24AA1095288059AC007E55CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				24AA1093288059AC007E55CC /* AppDelegate.swift */,
 				24AA1095288059AC007E55CC /* SceneDelegate.swift */,
 				24AA1097288059AC007E55CC /* ViewController.swift */,
+				243106B12881E1A60038A858 /* HabitsStore.swift */,
 				24AA109C288059AC007E55CC /* Assets.xcassets */,
 				24AA109E288059AC007E55CC /* LaunchScreen.storyboard */,
 				24AA10A1288059AC007E55CC /* Info.plist */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243106B22881E1A60038A858 /* HabitsStore.swift in Sources */,
 				24AA1098288059AC007E55CC /* ViewController.swift in Sources */,
 				24AA1094288059AC007E55CC /* AppDelegate.swift in Sources */,
 				24AA1096288059AC007E55CC /* SceneDelegate.swift in Sources */,
