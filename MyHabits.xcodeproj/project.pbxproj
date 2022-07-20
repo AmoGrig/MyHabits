@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2402C5E728843136000C8857 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402C5E628843136000C8857 /* UIColorExtension.swift */; };
+		2410CBF728829CF500AE4E6A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410CBF628829CF500AE4E6A /* MainTabBarController.swift */; };
+		2410CBF928829E5000AE4E6A /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410CBF828829E5000AE4E6A /* HabitsViewController.swift */; };
 		243106B22881E1A60038A858 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243106B12881E1A60038A858 /* HabitsStore.swift */; };
 		24AA1094288059AC007E55CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1093288059AC007E55CC /* AppDelegate.swift */; };
 		24AA1096288059AC007E55CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1095288059AC007E55CC /* SceneDelegate.swift */; };
-		24AA1098288059AC007E55CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1097288059AC007E55CC /* ViewController.swift */; };
+		24AA1098288059AC007E55CC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA1097288059AC007E55CC /* InfoViewController.swift */; };
 		24AA109D288059AC007E55CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24AA109C288059AC007E55CC /* Assets.xcassets */; };
 		24AA10A0288059AC007E55CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24AA109E288059AC007E55CC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2402C5E628843136000C8857 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		2410CBF628829CF500AE4E6A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		2410CBF828829E5000AE4E6A /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		243106B12881E1A60038A858 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
 		24AA1090288059AC007E55CC /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24AA1093288059AC007E55CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24AA1095288059AC007E55CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		24AA1097288059AC007E55CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		24AA1097288059AC007E55CC /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		24AA109C288059AC007E55CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24AA109F288059AC007E55CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24AA10A1288059AC007E55CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,7 +64,10 @@
 			children = (
 				24AA1093288059AC007E55CC /* AppDelegate.swift */,
 				24AA1095288059AC007E55CC /* SceneDelegate.swift */,
-				24AA1097288059AC007E55CC /* ViewController.swift */,
+				2410CBF628829CF500AE4E6A /* MainTabBarController.swift */,
+				2410CBF828829E5000AE4E6A /* HabitsViewController.swift */,
+				24AA1097288059AC007E55CC /* InfoViewController.swift */,
+				2402C5E628843136000C8857 /* UIColorExtension.swift */,
 				243106B12881E1A60038A858 /* HabitsStore.swift */,
 				24AA109C288059AC007E55CC /* Assets.xcassets */,
 				24AA109E288059AC007E55CC /* LaunchScreen.storyboard */,
@@ -138,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				243106B22881E1A60038A858 /* HabitsStore.swift in Sources */,
-				24AA1098288059AC007E55CC /* ViewController.swift in Sources */,
+				2410CBF928829E5000AE4E6A /* HabitsViewController.swift in Sources */,
+				2402C5E728843136000C8857 /* UIColorExtension.swift in Sources */,
+				24AA1098288059AC007E55CC /* InfoViewController.swift in Sources */,
+				2410CBF728829CF500AE4E6A /* MainTabBarController.swift in Sources */,
 				24AA1094288059AC007E55CC /* AppDelegate.swift in Sources */,
 				24AA1096288059AC007E55CC /* SceneDelegate.swift in Sources */,
 			);
