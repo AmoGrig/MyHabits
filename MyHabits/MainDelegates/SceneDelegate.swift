@@ -8,6 +8,11 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    private enum TabBarItemType {
+        case habits
+        case info
+    }
 
     var window: UIWindow?
 
@@ -22,26 +27,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    func createHabitsNC() -> UINavigationController {
-        let habitsVC = HabitsViewController()
-        habitsVC.title = "Today"
-        habitsVC.tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "rectangle.grid.1x2.fill"), tag: 0)
-        
-        return UINavigationController(rootViewController: habitsVC)
+    private func createNavigationController(for itemType: TabBarItemType) -> UINavigationController {
+        let viewController: UIViewController
+        let title: String
+        let tabBarItem: UITabBarItem
+        switch itemType {
+        case .habits:
+            viewController = HabitsViewController()
+            title = "Today"
+            tabBarItem = UITabBarItem(title: "Habits", image: UIImage(systemName: "rectangle.grid.1x2.fill"), tag: 0)
+        case .info:
+            viewController = InfoViewController()
+            title = "Info"
+            tabBarItem = UITabBarItem(title: "Info", image: UIImage(systemName: "info.circle.fill"), tag: 1)
+        }
+        viewController.tabBarItem = tabBarItem
+        viewController.title = title
+        return UINavigationController(rootViewController: viewController)
     }
     
-    func createInfoNC() -> UINavigationController {
-        let infoVC = InfoViewController()
-        infoVC.title = "Info"
-        infoVC.tabBarItem = UITabBarItem(title: "Info", image: UIImage(systemName: "info.circle.fill"), tag: 1)
-        return UINavigationController(rootViewController: infoVC)
-    }
-    
-    func createTabBar() -> UITabBarController {
+    private func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         UITabBar.appearance().tintColor = .myPurple
         UITabBar.appearance().backgroundColor = .myWhite
-        tabBar.viewControllers = [createHabitsNC(), createInfoNC()]
+        tabBar.viewControllers = [
+            self.createNavigationController(for: .habits),
+            self.createNavigationController(for: .info)
+        ]
         return tabBar
     }
     
