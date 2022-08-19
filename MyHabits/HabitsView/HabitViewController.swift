@@ -108,7 +108,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
                              date: datePicker.date,
                              color: colorView.backgroundColor ?? .orange)
         let store = HabitsStore.shared
-        store.habits.append(newHabit)
+        store.habits.insert(newHabit, at: 0)
         dismiss(animated: true)
     }
     
