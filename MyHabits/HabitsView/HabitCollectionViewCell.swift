@@ -10,6 +10,27 @@ import UIKit
 class HabitCollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell"
     
+    var habit: Habit? {
+
+        didSet {
+
+            habitNameLabel.text = habit?.name
+            habitNameLabel.textColor = habit?.color
+            statusCircle.layer.borderColor = habit?.color.cgColor
+            timeDescriptionLabel.text = habit?.dateString
+            counter.text = "Counter: \(habit?.trackDates.count ?? 0)"
+            if ((habit?.isAlreadyTakenToday) == true) {
+                statusCircle.image = .checkmark
+                statusCircle.tintColor = habit?.color
+                statusCircle.backgroundColor = habit?.color
+            } else {
+                statusCircle.image = .none
+            }
+        }
+    }
+    
+    var delegate: HabitCollectionViewCellDelegate?
+    
     private lazy var statusCircle: UIImageView = {
         let circle = UIImageView()
         circle.contentMode = .scaleToFill
@@ -45,15 +66,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     private lazy var counter: UILabel = {
         let counter = UILabel()
-        counter.text = "Counter:"
-        counter.textColor = .systemGray
-        counter.font = .systemFont(ofSize: 15, weight: .regular)
-        counter.translatesAutoresizingMaskIntoConstraints = false
-        return counter
-    }()
-    
-    private lazy var counterNumber: UILabel = {
-        let counter = UILabel()
         counter.textColor = .systemGray
         counter.font = .systemFont(ofSize: 15, weight: .regular)
         counter.translatesAutoresizingMaskIntoConstraints = false
@@ -69,28 +81,16 @@ class HabitCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupData(habit: Habit) {
-        habitNameLabel.text = habit.name
-        habitNameLabel.textColor = habit.color
-        statusCircle.layer.borderColor = habit.color.cgColor
-        timeDescriptionLabel.text = habit.dateString
-        counterNumber.text = String(habit.trackDates.count)
-        HabitsStore.shared.track(habit)
+        super.init(coder: coder)
+        setConstraints()
     }
 
     @objc private func habitCompleted() {
-        if statusCircle.image == .checkmark {
-            statusCircle.image = .none
-            statusCircle.tintColor = .none
-            statusCircle.backgroundColor = .none
-
-        } else {
-            statusCircle.image = .checkmark
-            statusCircle.tintColor = habitNameLabel.textColor
-            statusCircle.backgroundColor = habitNameLabel.textColor
+        if(habit?.isAlreadyTakenToday == false) {
+            
+            HabitsStore.shared.track(habit!)
+            delegate?.updateData()
+            
         }
         
     }
@@ -100,7 +100,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(habitNameLabel)
         contentView.addSubview(timeDescriptionLabel)
         contentView.addSubview(counter)
-        contentView.addSubview(counterNumber)
         
         NSLayoutConstraint.activate([
             habitNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
@@ -113,13 +112,16 @@ class HabitCollectionViewCell: UICollectionViewCell {
             counter.leadingAnchor.constraint(equalTo: timeDescriptionLabel.leadingAnchor),
             counter.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
-            counterNumber.topAnchor.constraint(equalTo: counter.topAnchor),
-            counterNumber.leadingAnchor.constraint(equalTo: counter.trailingAnchor, constant: 5),
-            
             statusCircle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             statusCircle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             statusCircle.heightAnchor.constraint(equalToConstant: 40),
             statusCircle.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
+}
+
+protocol HabitCollectionViewCellDelegate {
+    
+    func updateData()
+    
 }

@@ -10,6 +10,15 @@ import UIKit
 class ProgressCollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell1"
     
+    var progressLevel: Float? {
+        
+        didSet {
+            
+            progressView.progress = progressLevel ?? 0
+            
+        }
+    }
+    
     private lazy var motivationalText: UILabel = {
         let text = UILabel()
         text.text = "Everything is possible!"
@@ -27,7 +36,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         return progressView
     }()
     
-    private lazy var percentage: UILabel = {
+    lazy var percentage: UILabel = {
         let percentage = UILabel()
         percentage.text = "\(Int(progressView.progress*100))%"
         percentage.font = .systemFont(ofSize: 13, weight: .semibold)
