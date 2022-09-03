@@ -35,11 +35,10 @@ class HabitsViewController: UIViewController, UICollectionViewDelegate, HabitCol
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.title = "Today"
         navigationController?.navigationBar.prefersLargeTitles = true
-        updateData()
+        updateProgress()
     }
     
     func bluer() {
-        
         let bluer = UIBlurEffect(style: .light)
         let bluerEffect = UIVisualEffectView(effect: bluer)
         bluerEffect.frame = (tabBarController?.tabBar.bounds)!
@@ -64,12 +63,14 @@ class HabitsViewController: UIViewController, UICollectionViewDelegate, HabitCol
         navigationController?.navigationBar.scrollEdgeAppearance = compactAppearance
     }
     
-    func updateData() {
-        collectionView.reloadData()
+    func updateProgress() {
+        let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ProgressCollectionViewCell
+        cell?.setupProgress(HabitsStore.shared.todayProgress)
     }
     
     @objc func addButton() {
         let habitVC = HabitViewController()
+        habitVC.delegate = self
         let navVC = UINavigationController(rootViewController: habitVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
@@ -141,3 +142,12 @@ extension HabitsViewController:  UICollectionViewDataSource, UICollectionViewDel
     }
 }
 
+extension HabitsViewController: HabitViewControllerDelegate {
+    func saveNewHabit() {
+        self.collectionView.performBatchUpdates {
+            let newHabitIndex = HabitsStore.shared.habits.count - 1
+            self.collectionView.insertItems(at: [IndexPath(row: newHabitIndex, section: 1)])
+        }
+
+    }
+}

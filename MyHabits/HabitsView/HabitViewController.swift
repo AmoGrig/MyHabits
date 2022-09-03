@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HabitViewControllerDelegate: AnyObject {
+    func saveNewHabit()
+}
+
 class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate {
+    
+    weak var delegate: HabitViewControllerDelegate?
     
     var habit: Habit? {
         
@@ -148,9 +154,7 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
         let store = HabitsStore.shared
         if state == .save {
            store.habits.append(newHabit)
-            
         } else {
-            
             for (index, storageHabit) in store.habits.enumerated() {
                 if storageHabit.name == habit?.name {
                     newHabit.trackDates = storageHabit.trackDates
@@ -159,7 +163,21 @@ class HabitViewController: UIViewController, UIColorPickerViewControllerDelegate
                 }
             }
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            switch self.state {
+            case .save:
+                self.delegate?.saveNewHabit()
+            case .edit:
+                #warning("Реализовать изменение ячейки коллекции")
+                for (index, storageHabit) in store.habits.enumerated() {
+                    if storageHabit.name == self.habit?.name {
+                        newHabit.trackDates = storageHabit.trackDates
+                        store.habits[index] = newHabit
+                        self.habit? = newHabit
+                    }
+                }
+            }
+        }
     }
     
     @objc func cancelButton() {

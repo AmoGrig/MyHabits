@@ -76,4 +76,9 @@ class ProgressCollectionViewCell: UICollectionViewCell {
             percentage.trailingAnchor.constraint(equalTo: progressView.trailingAnchor)
         ])
     }
+    
+    func setupProgress(_ progress: Float) {
+        self.progressView.setProgress(progress, animated: true)
+        self.percentage.text = "\(Int(progress)*100)%"
+    }
 }

@@ -87,10 +87,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
 
     @objc private func habitCompleted() {
         if(habit?.isAlreadyTakenToday == false) {
-            
             HabitsStore.shared.track(habit!)
-            delegate?.updateData()
-            
+            self.delegate?.updateProgress()
         }
         
     }
@@ -121,7 +119,5 @@ class HabitCollectionViewCell: UICollectionViewCell {
 }
 
 protocol HabitCollectionViewCellDelegate {
-    
-    func updateData()
-    
+    func updateProgress()
 }
